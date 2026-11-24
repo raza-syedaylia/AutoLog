@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoLog - La tua auto, sempre in regola</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <h1>🚗 AutoLog</h1>
+      <p>La tua auto, sempre in regola.</p>
+    </div>
+    <div class="active-car">
+      <label for="carSelect">Auto attiva</label>
+      <select id="carSelect"></select>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="dashboard">Dashboard</button>
+    <button class="tab" data-tab="scadenze">Scadenze</button>
+    <button class="tab" data-tab="spese">Spese</button>
+    <button class="tab" data-tab="auto">Le mie auto</button>
+  </nav>
+
+  <main>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="panel active">
+      <div class="cards">
+        <div class="card">
+          <span class="card-label">Spesa totale</span>
+          <span class="card-value" id="statTotale">€ 0,00</span>
+        </div>
+        <div class="card">
+          <span class="card-label">Spesa quest'anno</span>
+          <span class="card-value" id="statAnno">€ 0,00</span>
+        </div>
+        <div class="card">
+          <span class="card-label">Costo al km</span>
+          <span class="card-value" id="statKm">n/d</span>
+        </div>
+        <div class="card">
+          <span class="card-label">Prossima scadenza</span>
+          <span class="card-value small" id="statProssima">Nessuna</span>
+        </div>
+      </div>
+
+      <h2>Spese per categoria</h2>
+      <div id="categorie" class="bars"></div>
+    </section>
+
+    <!-- SCADENZE -->
+    <section id="scadenze" class="panel">
+      <h2>Aggiungi scadenza</h2>
+      <form id="formScadenza" class="form">
+        <label>Tipo
+          <select id="scTipo">
+            <option>Bollo</option>
+            <option>Assicurazione</option>
+            <option>Revisione</option>
+            <option>Tagliando</option>
+            <option>Altro</option>
+          </select>
+        </label>
+        <label>Data di scadenza
+          <input type="date" id="scData" required>
+        </label>
+        <button type="submit" class="btn">Aggiungi</button>
+      </form>
+      <p class="hint">Suggerimento: la revisione si fa ogni 2 anni (la prima dopo 4 anni dall'immatricolazione).</p>
+
+      <h2>Scadenzario</h2>
+      <ul id="listaScadenze" class="list"></ul>
+    </section>
+
+    <!-- SPESE -->
+    <section id="spese" class="panel">
+      <h2>Aggiungi spesa</h2>
+      <form id="formSpesa" class="form">
+        <label>Data
+          <input type="date" id="spData" required>
+        </label>
+        <label>Categoria
+          <select id="spCat">
+            <option>Carburante</option>
+            <option>Riparazione</option>
+            <option>Gomme</option>
+            <option>Assicurazione</option>
+            <option>Bollo</option>
+            <option>Altro</option>
+          </select>
+        </label>
+        <label>Importo (€)
+          <input type="number" id="spImporto" min="0" step="0.01" required>
+        </label>
+        <label>Km attuali (facoltativo)
+          <input type="number" id="spKm" min="0" step="1">
+        </label>
+        <label class="wide">Note
+          <input type="text" id="spNote" maxlength="80" placeholder="es. Pieno al distributore">
+        </label>
+        <button type="submit" class="btn">Aggiungi</button>
+      </form>
+
+      <h2>Storico spese</h2>
+      <ul id="listaSpese" class="list"></ul>
+    </section>
+
+    <!-- AUTO -->
+    <section id="auto" class="panel">
+      <h2>Aggiungi auto</h2>
+      <form id="formAuto" class="form">
+        <label>Marca
+          <input type="text" id="auMarca" required maxlength="30" placeholder="es. Fiat">
+        </label>
+        <label>Modello
+          <input type="text" id="auModello" required maxlength="30" placeholder="es. Panda">
+        </label>
+        <label>Targa
+          <input type="text" id="auTarga" required maxlength="10" placeholder="es. AB123CD">
+        </label>
+        <label>Anno
+          <input type="number" id="auAnno" min="1950" max="2100" required placeholder="es. 2018">
+        </label>
+        <button type="submit" class="btn">Aggiungi</button>
+      </form>
+
+      <h2>Le tue auto</h2>
+      <ul id="listaAuto" class="list"></ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>AutoLog · progetto scolastico · i dati restano salvati nel tuo browser.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
